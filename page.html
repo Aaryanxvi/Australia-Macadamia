@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Australia Macadamias India - Trade</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background: #FFF2E5;
+    }
+
+    /* HEADER */
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 0;
+        position: relative;
+    }
+    nav {
+        display: flex;
+        align-items: center;
+        gap: 60px;
+    }
+    .nav-left, .nav-right {
+        display: flex;
+        gap: 40px;
+        border-bottom: 1px solid #c8a46a;
+        padding-bottom: 5px;
+    }
+    nav a {
+        text-decoration: none;
+        color: #b78c4b;
+        font-weight: 500;
+        font-size: 16px;
+    }
+    .logo {
+        margin: 0px;
+    }
+    .logo img {
+        height: 100px;
+    }
+    .nav-right {
+    display: flex;
+    gap: 40px;
+    border-bottom: 1px solid #c8a46a;
+    padding-bottom: 5px;
+    align-items: center; /* Add this for vertical alignment */
+}
+.search-icon img {
+    height: 22px; /* Make icon size match text */
+    width: 22px;
+    margin-left: -10px; /* Reduce space between Trade and icon */
+    vertical-align: middle;
+}
+.search-bar-container {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 420px; /* Make search box wider */
+    background: #fff;
+    border-radius: 40px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    padding: 1.2rem 2rem;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    border: 2px solid #c8a46a;
+}
+.search-bar-container.active {
+    opacity: 1;
+    transform: translateX(-50%) scaleX(1);
+    pointer-events: auto;
+}
+.search-bar-input {
+    border: none;
+    outline: none;
+    font-size: 1.5rem;
+    width: 100%;
+    background: transparent;
+    padding: 0.8rem 0;
+    font-family: 'Inter', sans-serif;
+    color: #9A3F3F;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+    /* HERO */
+    .hero {
+    color: rgb(255, 255, 255);
+    padding: 4rem 2rem;
+    text-align: center;
+    background-image: url('macadamia 1.png');
+    background-size: cover;
+    background-position: center;
+}
+    .hero-title {
+        font-size: 2.5rem;
+        font-weight: 900;
+        letter-spacing: 0.1em;
+    }
+    .hero-subtitle {
+        font-size: 1.3rem;
+        margin-top: 1rem;
+        letter-spacing: 0.1em;
+    }
+
+    /* WHY PARTNER */
+    .why-partner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 3rem 0; gap: 2rem; } 
+    .section-title { font-size: 2.5rem; font-weight: 900; color: #9A3F3F; letter-spacing: 0.1em; }
+     .why-partner-text { margin-top: 20px; font-size: 1.2rem; color: #9A3F3F; max-width: 600px; }
+.harvester-stack {
+    position: relative;
+    width: 70%;
+    max-width: 370px;
+    height: 280px;
+}
+
+.harvester-stack .harvester-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, z-index 0s 0s;
+}
+
+/* Offset for stack effect */
+.harvester-stack .harvester-image:nth-child(2) {
+    transform: translate(10px, 10px);
+    z-index: 1;
+}
+
+.harvester-stack .harvester-image:nth-child(3) {
+    transform: translate(20px, 20px);
+    z-index: 0;
+}
+
+/* Top image is always clickable */
+.harvester-stack .harvester-image.active {
+    z-index: 2;
+    transform: translate(0, 0);
+}
+    
+
+ /* Product Offerings Section */
+.products {
+  padding: 10px 20px;
+  background-image: url('Nut.png');
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+
+
+
+/* Product Carousel Container */
+.product-carousel::-webkit-scrollbar {
+  display: none;
+}
+.product-carousel {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    max-width: 1200px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    display: flex;
+}
+
+/* Product Cards */
+.product-card {
+  flex: 0 0 auto;
+  width: 260px;
+  height: 360px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+  transition: all 0.4s ease-in-out;
+}
+
+/* Image Container */
+.product-card-img {
+  width: 70%;
+  max-width: 220px;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transition: all 0.4s ease-in-out;
+}
+
+/* Product Images */
+.product-card-img img {
+  width: 110%;
+  height: 100%;
+  object-fit: contain;  /* ensures no cropping */
+  transition: all 0.4s ease-in-out;
+}
+
+/* Label */
+.product-card-label {
+  margin-top: 15px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+.product-cards {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: scrollProducts 30s linear infinite;
+}
+
+@keyframes scrollProducts {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Supplier Button */
+.supplier-list {
+  margin-top: 40px;
+}
+
+
+.submit-button:hover {
+  background: #232324;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .product-card {
+    width: 220px;
+    height: 320px;
+  }
+
+  .product-card-img {
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-card {
+    width: 200px;
+    height: 300px;
+  }
+
+  .product-card-img {
+    max-width: 160px;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card {
+    width: 180px;
+    height: 260px;
+  }
+
+  .product-card-img {
+    max-width: 140px;
+  }
+
+  .product-card-label {
+    font-size: 0.9rem;
+  }
+
+  .submit-button {
+    width: 100%;
+  }
+}
+
+    /* CONTACT */
+    .contact {
+        padding: 3rem 0;
+    }
+    .contact-title {
+        font-size: 2rem;
+        color: #9A3F3F;
+        font-weight: 900;
+        margin-bottom: 2rem;
+    }
+    .contact-form-title{
+      font-weight: bold;
+      font-size: large;
+        color: #9A3F3F;
+        margin-top: 1rem;
+        display: block;
+    }
+    .contact-flex {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+    .contact-form {
+        flex: 0.7;
+        background: #FFF2E5;
+        border: 1px solid #000;
+        border-radius: 20px;
+        padding: 2rem;
+    }
+    .form-label {
+        font-weight: 500;
+        color: #9A3F3F;
+        margin-top: 1rem;
+        display: block;
+    }
+    .form-field ,.message-field{
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 20px;
+    border: 2px solid #a86f12;
+    background: #FFFCFC;
+    margin-top: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #9A3F3F;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-field:focus {
+    outline: none;
+    border-color: #b78c4b;
+    box-shadow: 0 0 0 3px rgba(184, 140, 75, 0.1);
+}
+
+.form-field:hover {
+    border-color: #b78c4b;
+}
+
+/* Style the dropdown arrow */
+.form-field select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c8a46a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem;
+    padding-right: 3rem;
+}
+    .message-field {
+        height: 150px;
+        resize: none;
+    }
+    .submit-button {
+        margin-top: 1.5rem;
+        padding: 0.75rem 2rem;
+        background: #000;
+        color: white;
+        border: none;
+        border-radius: 30px;
+        font-size: 1.2rem;
+        font-weight: 900;
+        cursor: pointer;
+    }
+    .contact-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+.contact-or-title {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #b78c4b;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.contact-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+.contact-or {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 2rem;
+  min-width: 120px;
+}
+
+@media (max-width: 900px) {
+  .contact-flex {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  .contact-or {
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+}
+
+    /* TESTIMONIALS */
+.testimonials {
+  padding: 3rem 0;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.testimonial-carousel {
+  overflow: hidden;
+  width: 100%;
+}
+
+.testimonial-cards {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  animation: scrollTestimonials 20s linear infinite;
+}
+
+.testimonial {
+  flex: 0 0 300px;
+  padding: 1.5rem;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.testimonial:hover {
+  transform: scale(1.05);
+}
+
+.testimonial-avatar {
+  background: white;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #9A3F3F;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.testimonial-name {
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+}
+
+/* Smooth infinite scroll */
+@keyframes scrollTestimonials {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+    /* FOOTER */
+    footer {
+    background: #D48040;
+    color: #1a120b;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    padding: 0;
+}
+
+.custom-footer-bg {
+    position: absolute;
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    pointer-events: none; 
+    z-index: 0;
+}
+
+.footer-blob {
+    position: absolute;
+    left: 15%;
+    top: 30%;
+    transform: translateX(-50%);
+    width: 350px;
+    height: 220px;
+    opacity: 0.6;
+    z-index: 1;
+    object-fit: contain;
+}
+
+.custom-footer {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem 1rem 2rem;
+    gap: 4rem;
+}
+
+.footer-left {
+    flex: 1 1 400px;
+    min-width: 300px;
+}
+
+.footer-logo-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.footer-logo-img {
+    height: 80px;
+}
+
+.footer-newsletter-title {
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+    color: #1a120b;
+}
+
+.footer-newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.footer-newsletter-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 25px;
+    border: none;
+    background: #FFEEDB;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    color: #1a120b;
+}
+
+.footer-newsletter-input::placeholder {
+    color: #8B6F47;
+}
+
+.footer-follow-title {
+    font-size: 1.2rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+    color: #1a120b;
+}
+
+.footer-social-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-social-icon {
+    width: 45px;
+    height: 45px;
+    border: 2px solid #1a120b;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #1a120b;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.footer-social-icon img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    filter: brightness(0) saturate(100%) invert(11%) sepia(25%) saturate(1234%) hue-rotate(8deg) brightness(94%) contrast(90%);
+    transition: filter 0.3s ease;
+}
+
+.footer-social-icon:hover {
+    background: #1a120b;
+}
+
+.footer-social-icon:hover img {
+    filter: brightness(0) saturate(100%) invert(83%) sepia(45%) saturate(1012%) hue-rotate(359deg) brightness(101%) contrast(93%);
+}
+
+.footer-right {
+    flex: 1 1 300px;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.footer-menu {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+    line-height: 1.8rem;
+    color: #1a120b;
+    padding-top: 30px;
+}
+
+.footer-menu a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.footer-menu a:hover {
+    color: #8B6F47;
+}
+
+.footer-contact-section {
+    margin-top: auto;
+}
+
+.footer-contact-title {
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    color: #1a120b;
+}
+
+.footer-contact-info {
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    color: #1a120b;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .custom-footer {
+        flex-direction: column;
+        text-align: left;
+        gap: 2rem;
+        padding: 2rem 1rem 1rem;
+    }
+    
+    .footer-left {
+        min-width: 100%;
+    }
+    
+    .footer-right {
+        min-width: 100%;
+    }
+    
+    .footer-social-row {
+        justify-content: flex-start;
+    }
+    
+    .footer-blob {
+        left: 50%;
+        top: 20%;
+        width: 280px;
+        height: 180px;
+    }
+}
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 1.8rem;
+        }
+        .hero-subtitle {
+            font-size: 1rem;
+        }
+        .section-title {
+            font-size: 2rem;
+        }
+        nav {
+            flex-direction: column;
+            gap: 20px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <nav>
+        <div class="nav-left">
+            <a href="https://www.australian-macadamias.org/stories/">Stories</a>
+            <a href="https://www.australian-macadamias.org/recipes/">Our Recipes</a>
+            <a href="https://www.australian-macadamias.org/health-wellbeing/">Health Benefits</a>
+        </div>
+        <div class="logo">
+            <img src="australia macadamia logo.png" alt="Australian Macadamias Logo">
+        </div>
+        <div class="nav-right">
+            <a href="https://www.australian-macadamias.org/an-australian-legend/">History</a>
+            <a href="https://www.australian-macadamias.org/our-sustainable-approach/">Sustainability</a>
+            <a href="#">Trade</a>
+            <span class="search-icon" id="searchIcon"><img src="search-removebg-preview.png"></span>
+        </div>
+    </nav>
+    <div class="search-bar-container" id="searchBarContainer">
+        <input type="text" class="search-bar-input" placeholder="Search...">
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="hero-title">Partner with Australia Macadamias India</div>
+    <div class="hero-subtitle">Premium macadamias for distributors, suppliers, and traders</div>
+</section>
+
+<!-- WHY PARTNER -->
+<section class="why-partner">
+    <div>
+        <div class="section-title">Why Partner with Us</div>
+        <p class="why-partner-text">High-quality nuts, reliable supply chain, global reputation</p>
+    </div>
+    <div class="harvester-stack">
+        <div class="harvester-image" style="background-image: url('1201 Harvester 1.png');"></div>
+        <div class="harvester-image" style="background-image: url('0524 nuts (11).jpg');"></div>
+        <div class="harvester-image" style="background-image: url('1509 Macadamia topping (2).jpg');"></div>
+    </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" 3rem 0; overflow: hidden;">
+  <div class="section-title">Product Offerings</div>
+
+<div class="product-carousel" id="product-carousel-track">
+    <div class="product-cards" style="display: flex; gap: 1.5rem;">
+      
+      <!-- Product 1 -->
+      <div class="product-card" style="background: url('product-card-bg.png') center/contain no-repeat; width: 220px; height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0;">
+        <div class="product-card-img">
+          <img src="2011 Girl snack roasted macadamias (1) 1.png" alt="Roasted Macadamias" style="width: 120px; height: auto;">
+        </div>
+        <div class="product-card-label">Macadamia Nut (Roasted)</div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card" style="background: url('product-card-bg.png') center/contain no-repeat; width: 220px; height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0;">
+        <div class="product-card-img">
+          <img src="1409 Macadamias-snacking (10) 1.png" alt="Raw Macadamias" style="width: 120px; height: auto;">
+        </div>
+        <div class="product-card-label">Macadamia Nut (Raw)</div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card" style="background: url('product-card-bg.png') center/contain no-repeat; width: 220px; height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0;">
+        <div class="product-card-img">
+          <img src="1409 Macadamias-in the kitchen (3).png" alt="Roasted Salted Macadamias" style="width: 120px; height: auto;">
+        </div>
+        <div class="product-card-label">Macadamia Nut (Roasted Salted)</div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card" style="background: url('product-card-bg.png') center/contain no-repeat; width: 220px; height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0;">
+        <div class="product-card-img">
+          <img src="1509 Macadamia topping (2).jpg" alt="Caramel Macadamias" style="width: 120px; height: auto;">
+        </div>
+        <div class="product-card-label">Macadamia Nut (Caramel)</div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="product-card" style="background: url('product-card-bg.png') center/contain no-repeat; width: 220px; height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0;">
+        <div class="product-card-img">
+          <img src="1211 Macadamias-storage (1).png" alt="Plain Macadamias" style="width: 120px; height: auto;">
+        </div>
+        <div class="product-card-label">Macadamia Nut (Plain)</div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="supplier-list">
+    <a href="https://trade.australian-macadamias.org/suppliers/" target="_blank">
+    <button class="submit-button">View Supplier List</button>
+</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <div class="contact-title">Get in Touch with Us</div>
+  <div class="contact-flex">
+    <form class="contact-form">
+      <div class="contact-form-title">Send us a message</div>
+      <label class="form-label">Lead type</label>
+      <select class="form-field">
+        <option>Choose</option>
+        <option>Distributor</option>
+        <option>Supplier</option>
+        <option>Trader</option>
+      </select>
+      <label class="form-label">Full name</label>
+      <input type="text" class="form-field">
+      <label class="form-label">Company name</label>
+      <input type="text" class="form-field">
+      <label class="form-label">Mobile number</label>
+      <input type="tel" class="form-field">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-field">
+      <label class="form-label">Message</label>
+      <textarea class="message-field" placeholder="Type your message here..."></textarea>
+      <button class="submit-button">Post</button>
+    </form>
+    
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<!-- Testimonials Carousel HTML -->
+<section class="testimonials">
+  <div class="section-title">Hear from our partners</div>
+  <div class="testimonial-carousel">
+    <div class="testimonial-cards" id="testimonial-track">
+      <div class="testimonial">
+        <div class="testimonial-avatar">A</div>
+        <div class="testimonial-name">Person A</div>
+        <p>Loved the service!</p>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-avatar">B</div>
+        <div class="testimonial-name">Person B</div>
+        <p>Highly recommend!</p>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-avatar">C</div>
+        <div class="testimonial-name">Person C</div>
+        <p>Fantastic experience!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+    <div class="custom-footer-bg">
+        <img src="image (11) 2.png" alt="" class="footer-blob">
+    </div>
+    <div class="custom-footer">
+      
+        <div class="footer-left">
+            <div class="footer-logo-center">
+                <img src="Screenshot_2025-06-14_083433-removebg-preview 1.png" alt="Australian Macadamias Logo" class="footer-logo-img">
+            </div>
+            <div class="footer-newsletter-title">Sign up to our newsletter</div>
+            <form class="footer-newsletter-form">
+                <input type="text" placeholder="Name" class="footer-newsletter-input">
+                <input type="email" placeholder="Email" class="footer-newsletter-input">
+            </form>
+            <div class="footer-follow-title">FOLLOW US</div>
+            <div class="footer-social-row">
+                <a href="https://www.youtube.com/@AustralianMacadamiasIndia" target="_blank" class="footer-social-icon">
+                    <img src="youtube-icon.png" alt="YouTube">
+                </a>
+                <a href="https://www.instagram.com/australianmacadamias_in/" target="_blank" class="footer-social-icon">
+                    <img src="instagram-icon.png" alt="Instagram">
+                </a>
+                <a href="https://www.facebook.com/australianmacadamiasin/about/?_rdr" target="_blank" class="footer-social-icon">
+                    <img src="facebook-icon.png" alt="Facebook">
+                </a>
+                
+            </div>
+        </div>
+        <div class="footer-right">
+            <div class="footer-menu">
+                <a href="https://www.australianmacadamias.in/"><div>HOME</div></a>
+                <a href="https://www.australianmacadamias.in/an-australian-legend/"><div>HISTORY</div></a>
+                <a href="https://www.australianmacadamias.in/stories/"><div>STORIES</div></a>
+                <a href="https://www.australianmacadamias.in/recipes/"><div>RECIPES</div></a>
+                <a href="https://www.australianmacadamias.in/health-benefits/"><div>HEALTH BENEFITS</div></a>
+                <a href="https://www.australianmacadamias.in/sustainability/"><div>SUSTAINABILITY</div></a>
+                <a href="#"><div>TRADE</div></a>
+            </div>
+            <div class="footer-contact-section">
+                <div class="footer-contact-title">Contact us</div>
+                <div class="footer-contact-info">
+                  Varun Kakar<br>
+                    varun.kakar@fourpillarstrading.com<br>
+                    +91 88280 71244
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
+
+<script>
+
+    // Search bar animation
+    const searchIcon = document.getElementById('searchIcon');
+    const searchBarContainer = document.getElementById('searchBarContainer');
+    searchIcon.addEventListener('click', function() {
+        searchBarContainer.classList.toggle('active');
+        if (searchBarContainer.classList.contains('active')) {
+            searchBarContainer.querySelector('input').focus();
+        }
+    });
+    // Optional: Hide search bar when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!searchBarContainer.contains(e.target) && !searchIcon.contains(e.target)) {
+            searchBarContainer.classList.remove('active');
+        }
+    });</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const slider = document.querySelector('.product-carousel');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    let animationFrame;
+    let speed = 0.7; // pixels per frame, adjust for smoothness
+
+    // Drag support
+    slider.addEventListener('mousedown', e => {
+        isDown = true;
+        slider.classList.add('active');
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+        cancelAnimationFrame(animationFrame); // Pause auto-scroll while dragging
+    });
+    slider.addEventListener('mouseleave', () => isDown = false);
+    slider.addEventListener('mouseup', () => {
+        isDown = false;
+        startSmoothScroll();
+    });
+    slider.addEventListener('mousemove', e => {
+        if(!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2;
+        slider.scrollLeft = scrollLeft - walk;
+    });
+
+    // Touch support
+    slider.addEventListener('touchstart', e => {
+        isDown = true;
+        startX = e.touches[0].clientX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+        cancelAnimationFrame(animationFrame); // Pause auto-scroll while dragging
+    });
+    slider.addEventListener('touchend', () => {
+        isDown = false;
+        startSmoothScroll();
+    });
+    slider.addEventListener('touchmove', e => {
+        if(!isDown) return;
+        const x = e.touches[0].clientX - slider.offsetLeft;
+        const walk = (x - startX) * 2;
+        slider.scrollLeft = scrollLeft - walk;
+    });
+
+    // Super smooth continuous auto-loop animation
+    function smoothLoop() {
+        // If at end, reset to start for seamless loop
+        if (slider.scrollLeft + slider.offsetWidth >= slider.scrollWidth - 2) {
+            slider.scrollLeft = 0;
+        } else {
+            slider.scrollLeft += speed;
+        }
+        animationFrame = requestAnimationFrame(smoothLoop);
+    }
+
+    function startSmoothScroll() {
+        cancelAnimationFrame(animationFrame);
+        animationFrame = requestAnimationFrame(smoothLoop);
+    }
+
+    // Pause on hover/touch, resume on leave/end
+    slider.addEventListener('mouseenter', () => cancelAnimationFrame(animationFrame));
+    slider.addEventListener('mouseleave', startSmoothScroll);
+    slider.addEventListener('touchstart', () => cancelAnimationFrame(animationFrame));
+    slider.addEventListener('touchend', startSmoothScroll);
+
+    // Start animation
+    startSmoothScroll();
+});
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const track = document.getElementById("testimonial-track");
+
+    // Clone all testimonials and append them for seamless loop
+    const clone = track.innerHTML;
+    track.innerHTML += clone;
+
+    // Adjust animation duration dynamically based on number of cards
+    const testimonials = track.querySelectorAll(".testimonial").length;
+    const speed = testimonials * 5; // 5s per card
+    track.style.animationDuration = `${speed}s`;
+  });
+</script>
+<script>
+  const images = document.querySelectorAll('.harvester-stack .harvester-image');
+  let currentIndex = 0;
+
+  images[currentIndex].classList.add('active');
+
+  images.forEach(img => {
+    img.addEventListener('click', () => {
+      images[currentIndex].classList.remove('active');
+      currentIndex = (currentIndex + 1) % images.length;
+      images[currentIndex].classList.add('active');
+    });
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const track = document.querySelector("#product-carousel-track .product-cards");
+
+    // Clone all product cards and append them for seamless loop
+    const clone = track.innerHTML;
+    track.innerHTML += clone;
+
+    // Adjust animation duration dynamically based on number of cards
+    const cards = track.querySelectorAll(".product-card").length;
+    const speed = cards * 6; // 6s per card, adjust as needed
+    track.style.animationDuration = `${speed}s`;
+  });
+</script>
