@@ -227,42 +227,96 @@ body {
 .harvester-stack {
     position: relative;
     width: 70%;
-    max-width: 370px;
-    height: 280px;
-    margin-right: 50px;
+    max-width: 400px;
+    height: 320px;
+    perspective: 1000px;
 }
 
 .harvester-stack .harvester-image {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 12px;
+    width: 280px;
+    height: 200px;
+    border-radius: 8px;
     background-size: cover;
     background-position: center;
     cursor: pointer;
-    transition: transform 0.3s ease, z-index 0s 0s;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border: 1px solid #fff;
 }
 
-/* Offset for stack effect */
+/* Scattered positioning and rotations */
+.harvester-stack .harvester-image:nth-child(1) {
+    transform: translate(-20px, 10px) rotate(-8deg);
+    z-index: 3;
+}
+
 .harvester-stack .harvester-image:nth-child(2) {
-    transform: translate(10px, 10px);
-    z-index: 1;
+    transform: translate(40px, -15px) rotate(12deg);
+    z-index: 2;
 }
 
 .harvester-stack .harvester-image:nth-child(3) {
-    transform: translate(20px, 20px);
+    transform: translate(10px, 60px) rotate(-15deg);
+    z-index: 1;
+}
+
+/* Active state brings image to front */
+.harvester-stack .harvester-image.active {
+    z-index: 10 !important;
+    transform: translate(0, 0) rotate(0deg) scale(1.05) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+/* Hover effects only for non-active images */
+.harvester-stack .harvester-image:not(.active):hover {
+    z-index: 5;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Preserve the specific transforms for non-active images on hover */
+.harvester-stack .harvester-image:nth-child(1):not(.active):hover {
+    transform: translate(-20px, 10px) rotate(-8deg) scale(1.03);
+}
+
+.harvester-stack .harvester-image:nth-child(2):not(.active):hover {
+    transform: translate(40px, -15px) rotate(12deg) scale(1.03);
+}
+
+.harvester-stack .harvester-image:nth-child(3):not(.active):hover {
+    transform: translate(10px, 60px) rotate(-15deg) scale(1.03);
+}
+
+/* Active image hover effect */
+.harvester-stack .harvester-image.active:hover {
+    transform: translate(0, 0) rotate(0deg) scale(1.08) !important;
+}
+
+.harvester-stack::before {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    top: -10px;
+    right: -30px;
+    transform: rotate(25deg);
+    opacity: 0.7;
     z-index: 0;
 }
 
-/* Top image is always clickable */
-.harvester-stack .harvester-image.active {
-    z-index: 2;
-    transform: translate(0, 0);
+.harvester-stack::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 80px;
+    border-radius: 4px;
+    bottom: -20px;
+    left: -20px;
+    transform: rotate(-20deg);
+    opacity: 0.6;
+    z-index: 0;
 }
-    
-
  /* Product Offerings Section */
 .products {
   padding: 10px 20px;
