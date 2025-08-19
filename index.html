@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Australia Macadamias India - Trade</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
     * {
         margin: 0;
@@ -13,9 +12,34 @@
     }
 
     body {
-        font-family: 'Inter', sans-serif;
+        font-family: 'Gazpacho', sans-serif;
         background: #FFF2E5;
+        
     }
+    @font-face {
+    font-family: 'Gazpacho';
+    src: url('fonts/Gazpacho-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gazpacho';
+    src: url('fonts/Gazpacho-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gazpacho';
+    src: url('fonts/Gazpacho-Italic-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+body {
+    font-family: 'Gazpacho', sans-serif;
+}
 
     /* HEADER */
     header {
@@ -92,7 +116,7 @@
     width: 100%;
     background: transparent;
     padding: 0.8rem 0;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Gazpacho', sans-serif;
     color: #9A3F3F;
     font-weight: 500;
     letter-spacing: 0.05em;
@@ -165,7 +189,7 @@
 .products {
   padding: 10px 20px;
   background-image: url('Nut.png');
-  font-family: 'Inter', sans-serif;
+  font-family:'Gazpacho', sans-serif;
   text-align: center;
 }
 
@@ -240,13 +264,10 @@
   display: flex;
   gap: 1.5rem;
   width: max-content;
-  animation: scrollProducts 30s linear infinite;
+  
 }
 
-@keyframes scrollProducts {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
+
 
 /* Supplier Button */
 .supplier-list {
@@ -448,7 +469,7 @@
   display: flex;
   gap: 2rem;
   width: max-content;
-  animation: scrollTestimonials 20s linear infinite;
+  
 }
 
 .testimonial {
@@ -482,11 +503,6 @@
   margin-bottom: 0.5rem;
 }
 
-/* Smooth infinite scroll */
-@keyframes scrollTestimonials {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
 
     /* FOOTER */
     footer {
@@ -928,7 +944,6 @@
 </html>
 
 <script>
-
     // Search bar animation
     const searchIcon = document.getElementById('searchIcon');
     const searchBarContainer = document.getElementById('searchBarContainer');
@@ -938,125 +953,73 @@
             searchBarContainer.querySelector('input').focus();
         }
     });
-    // Optional: Hide search bar when clicking outside
     document.addEventListener('click', function(e) {
         if (!searchBarContainer.contains(e.target) && !searchIcon.contains(e.target)) {
             searchBarContainer.classList.remove('active');
         }
-    });</script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-    const slider = document.querySelector('.product-carousel');
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-    let animationFrame;
-    let speed = 0.7; // pixels per frame, adjust for smoothness
-
-    // Drag support
-    slider.addEventListener('mousedown', e => {
-        isDown = true;
-        slider.classList.add('active');
-        startX = e.pageX - slider.offsetLeft;
-        scrollLeft = slider.scrollLeft;
-        cancelAnimationFrame(animationFrame); // Pause auto-scroll while dragging
-    });
-    slider.addEventListener('mouseleave', () => isDown = false);
-    slider.addEventListener('mouseup', () => {
-        isDown = false;
-        startSmoothScroll();
-    });
-    slider.addEventListener('mousemove', e => {
-        if(!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 2;
-        slider.scrollLeft = scrollLeft - walk;
     });
 
-    // Touch support
-    slider.addEventListener('touchstart', e => {
-        isDown = true;
-        startX = e.touches[0].clientX - slider.offsetLeft;
-        scrollLeft = slider.scrollLeft;
-        cancelAnimationFrame(animationFrame); // Pause auto-scroll while dragging
-    });
-    slider.addEventListener('touchend', () => {
-        isDown = false;
-        startSmoothScroll();
-    });
-    slider.addEventListener('touchmove', e => {
-        if(!isDown) return;
-        const x = e.touches[0].clientX - slider.offsetLeft;
-        const walk = (x - startX) * 2;
-        slider.scrollLeft = scrollLeft - walk;
-    });
+    // Harvester stack functionality
+    document.addEventListener("DOMContentLoaded", () => {
+        const images = document.querySelectorAll('.harvester-stack .harvester-image');
+        let currentIndex = 0;
 
-    // Super smooth continuous auto-loop animation
-    function smoothLoop() {
-        // If at end, reset to start for seamless loop
-        if (slider.scrollLeft + slider.offsetWidth >= slider.scrollWidth - 2) {
-            slider.scrollLeft = 0;
-        } else {
-            slider.scrollLeft += speed;
+        images[currentIndex].classList.add('active');
+
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                images[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % images.length;
+                images[currentIndex].classList.add('active');
+            });
+        });
+
+        // True infinite scroll for product carousel
+        function createInfiniteScroll(containerSelector, itemSelector, speed = 1) {
+            const container = document.querySelector(containerSelector);
+            if (!container) return;
+            
+            const track = container.querySelector('.product-cards, .testimonial-cards');
+            if (!track) return;
+            
+            const items = track.children;
+            const itemCount = items.length;
+            
+            // Clone items for seamless loop (clone enough to fill viewport + extra)
+            for (let i = 0; i < itemCount * 2; i++) {
+                const clone = items[i % itemCount].cloneNode(true);
+                track.appendChild(clone);
+            }
+            
+            let translateX = 0;
+            const itemWidth = items[0].offsetWidth + (itemSelector.includes('product') ? 24 : 32); // gap size
+            
+            function animate() {
+                translateX -= speed;
+                
+                // Reset when we've moved past one full set of original items
+                if (Math.abs(translateX) >= itemWidth * itemCount) {
+                    translateX = 0;
+                }
+                
+                track.style.transform = `translateX(${translateX}px)`;
+                requestAnimationFrame(animate);
+            }
+            
+            // Pause on hover
+            container.addEventListener('mouseenter', () => {
+                track.style.animationPlayState = 'paused';
+            });
+            
+            container.addEventListener('mouseleave', () => {
+                track.style.animationPlayState = 'running';
+            });
+            
+            animate();
         }
-        animationFrame = requestAnimationFrame(smoothLoop);
-    }
 
-    function startSmoothScroll() {
-        cancelAnimationFrame(animationFrame);
-        animationFrame = requestAnimationFrame(smoothLoop);
-    }
-
-    // Pause on hover/touch, resume on leave/end
-    slider.addEventListener('mouseenter', () => cancelAnimationFrame(animationFrame));
-    slider.addEventListener('mouseleave', startSmoothScroll);
-    slider.addEventListener('touchstart', () => cancelAnimationFrame(animationFrame));
-    slider.addEventListener('touchend', startSmoothScroll);
-
-    // Start animation
-    startSmoothScroll();
-});
-</script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const track = document.getElementById("testimonial-track");
-
-    // Clone all testimonials and append them for seamless loop
-    const clone = track.innerHTML;
-    track.innerHTML += clone;
-
-    // Adjust animation duration dynamically based on number of cards
-    const testimonials = track.querySelectorAll(".testimonial").length;
-    const speed = testimonials * 5; // 5s per card
-    track.style.animationDuration = `${speed}s`;
-  });
-</script>
-<script>
-  const images = document.querySelectorAll('.harvester-stack .harvester-image');
-  let currentIndex = 0;
-
-  images[currentIndex].classList.add('active');
-
-  images.forEach(img => {
-    img.addEventListener('click', () => {
-      images[currentIndex].classList.remove('active');
-      currentIndex = (currentIndex + 1) % images.length;
-      images[currentIndex].classList.add('active');
+        // Initialize both carousels
+        createInfiniteScroll('#product-carousel-track', 'product-card', 0.8);
+        createInfiniteScroll('.testimonial-carousel', 'testimonial', 0.5);
     });
-  });
-</script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const track = document.querySelector("#product-carousel-track .product-cards");
-
-    // Clone all product cards and append them for seamless loop
-    const clone = track.innerHTML;
-    track.innerHTML += clone;
-
-    // Adjust animation duration dynamically based on number of cards
-    const cards = track.querySelectorAll(".product-card").length;
-    const speed = cards * 6; // 6s per card, adjust as needed
-    track.style.animationDuration = `${speed}s`;
-  });
 </script>
