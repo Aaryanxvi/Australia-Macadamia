@@ -10,19 +10,7 @@
         padding: 0;
         box-sizing: border-box;
     }
-Looking at your code, I can see a few issues that might prevent the Gazpacho font from loading properly:
-1. Font Path Issue
-Your font files are referenced as 'fonts/Gazpacho-*.ttf' but based on your file structure, they should be relative to your HTML file. Make sure your folder structure looks like this:
-Your Project Folder/
-├── index.html (your HTML file)
-├── fonts/
-│   ├── Gazpacho-Thin.ttf
-│   ├── Gazpacho-Light.ttf
-│   ├── Gazpacho-Regular.ttf
-│   └── (all other font files)
-2. Missing Font Files
-Based on your font list, some of the @font-face declarations reference files that might not exist. Update your @font-face rules to only include the fonts you actually have:
-css@font-face {
+@font-face {
     font-family: 'Gazpacho';
     src: url('fonts/Gazpacho Black.ttf') format('truetype');
     font-weight: 900;
@@ -241,6 +229,7 @@ body {
     width: 70%;
     max-width: 370px;
     height: 280px;
+    margin-right: 50px;
 }
 
 .harvester-stack .harvester-image {
