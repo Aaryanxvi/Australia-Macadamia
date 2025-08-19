@@ -10,32 +10,121 @@
         padding: 0;
         box-sizing: border-box;
     }
-
-    body {
-        font-family: 'Gazpacho', sans-serif;
-        background: #FFF2E5;
-        
-    }
-    @font-face {
+Looking at your code, I can see a few issues that might prevent the Gazpacho font from loading properly:
+1. Font Path Issue
+Your font files are referenced as 'fonts/Gazpacho-*.ttf' but based on your file structure, they should be relative to your HTML file. Make sure your folder structure looks like this:
+Your Project Folder/
+├── index.html (your HTML file)
+├── fonts/
+│   ├── Gazpacho-Thin.ttf
+│   ├── Gazpacho-Light.ttf
+│   ├── Gazpacho-Regular.ttf
+│   └── (all other font files)
+2. Missing Font Files
+Based on your font list, some of the @font-face declarations reference files that might not exist. Update your @font-face rules to only include the fonts you actually have:
+css@font-face {
     font-family: 'Gazpacho';
-    src: url('fonts/Gazpacho-Regular.ttf') format('truetype');
-    font-weight: 400;
+    src: url('fonts/Gazpacho Black.ttf') format('truetype');
+    font-weight: 900;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Gazpacho';
-    src: url('fonts/Gazpacho-Bold.ttf') format('truetype');
+    src: url('fonts/Gazpacho Bold.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Gazpacho';
-    src: url('fonts/Gazpacho-Italic-Regular.ttf') format('truetype');
+    src: url('fonts/Gazpacho Heavy.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gazpacho';
+    src: url('fonts/Gazpacho Italic Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Gazpacho';
+    src: url('fonts/Gazpacho Italic Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Gazpacho';
+    src: url('fonts/Gazpacho Italic Heavy.ttf') format('truetype');
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Gazpacho';
+    src: url('fonts/Gazpacho Italic Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Gazpacho';
+    src: url('fonts/Gazpacho Italic Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Gazpacho';
+    src: url('fonts/Gazpacho Italic Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: italic;
 }
+
+@font-face {
+    font-family: 'Gazpacho';
+    src: url('fonts/Gazpacho Italic Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Gazpacho';
+    src: url('fonts/Gazpacho Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gazpacho';
+    src: url('fonts/Gazpacho Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gazpacho';
+    src: url('fonts/Gazpacho Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gazpacho';
+    src: url('fonts/Gazpacho Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+    body {
+        font-family: 'Gazpacho', sans-serif;
+        background: #FFF2E5;
+        
+    }
+
 
 body {
     font-family: 'Gazpacho', sans-serif;
@@ -367,7 +456,7 @@ body {
     border: 2px solid #a86f12;
     background: #FFFCFC;
     margin-top: 0.5rem;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Gazpacho', sans-serif;
     font-size: 1rem;
     color: #9A3F3F;
     font-weight: 500;
@@ -508,7 +597,7 @@ body {
     footer {
     background: #D48040;
     color: #1a120b;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Gazpacho', sans-serif;
     position: relative;
     padding: 0;
 }
@@ -586,7 +675,7 @@ body {
     border: none;
     background: #FFEEDB;
     font-size: 1rem;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Gazpacho', sans-serif;
     color: #1a120b;
 }
 
