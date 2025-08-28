@@ -221,10 +221,29 @@ body {
     }
 
     /* WHY PARTNER */
-    .why-partner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 3rem 0; gap: 2rem; } 
-    .section-title { font-size: 2.5rem; font-weight: 900; color: #9A3F3F; letter-spacing: 0.1em; }
-     .why-partner-text { margin-top: 20px; font-size: 1.2rem; color: #9A3F3F; max-width: 600px; }
+    .why-partner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;    
+    justify-content: flex-start;  
+    padding: 3rem 0;
+    gap: 5rem; /* Increased the gap to push the images to the right */
+}
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #9A3F3F;
+    letter-spacing: 0.1em;
+}
+.why-partner-text {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #9A3F3F;
+    max-width: 600px;
+}
 .harvester-stack {
+    margin-left: 70px;
+    padding-top: 30px;
     position: relative;
     width: 70%;
     max-width: 400px;
@@ -265,13 +284,11 @@ body {
 .harvester-stack .harvester-image.active {
     z-index: 10 !important;
     transform: translate(0, 0) rotate(0deg) scale(1.05) !important;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
 }
 
 /* Hover effects only for non-active images */
 .harvester-stack .harvester-image:not(.active):hover {
     z-index: 5;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 }
 
 /* Preserve the specific transforms for non-active images on hover */
@@ -995,30 +1012,6 @@ body {
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<!-- Testimonials Carousel HTML -->
-<section class="testimonials">
-  <div class="section-title">Hear from our partners</div>
-  <div class="testimonial-carousel">
-    <div class="testimonial-cards" id="testimonial-track">
-      <div class="testimonial">
-        <div class="testimonial-avatar">A</div>
-        <div class="testimonial-name">Person A</div>
-        <p>Loved the service!</p>
-      </div>
-      <div class="testimonial">
-        <div class="testimonial-avatar">B</div>
-        <div class="testimonial-name">Person B</div>
-        <p>Highly recommend!</p>
-      </div>
-      <div class="testimonial">
-        <div class="testimonial-avatar">C</div>
-        <div class="testimonial-name">Person C</div>
-        <p>Fantastic experience!</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 <!-- FOOTER -->
@@ -1155,4 +1148,3 @@ body {
         createInfiniteScroll('.testimonial-carousel', 'testimonial', 0.5);
     });
 </script>
-
