@@ -270,9 +270,11 @@ body {
     display: flex;
     flex-wrap: wrap;
     align-items: center;    
-    justify-content: flex-start;  
+    justify-content: space-between; /* Changed to space-between to push text left and images right */
     padding: 3rem 0;
-    gap: 5rem; /* Increased the gap to push the images to the right */
+    gap: 2rem; /* Adjusted gap */
+    margin-left: 100px; /* Adjusted to shift content more to the right */
+    margin-right: 100px;
 }
 .section-title {
     font-size: 2.5rem;
@@ -287,7 +289,6 @@ body {
     max-width: 600px;
 }
 .harvester-stack {
-    margin-left: 70px;
     padding-top: 30px;
     position: relative;
     width: 70%;
@@ -579,17 +580,43 @@ body {
     border-color: #b78c4b;
 }
 
-/* Style the dropdown arrow */
-.form-field select {
-    appearance: none;
+/* New wrapper for custom select styling */
+.select-wrapper {
+    position: relative;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.form-field.select-field {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 20px;
+    border: 2px solid #a86f12;
+    background: #FFFCFC;
+    font-family: 'Gazpacho', sans-serif;
+    font-size: 1rem;
+    color: #9A3F3F;
+    font-weight: 500;
+    cursor: pointer;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c8a46a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 1rem center;
-    background-size: 1rem;
-    padding-right: 3rem;
+    appearance: none;
+    padding-right: 3rem; /* Add padding to make space for the custom arrow */
 }
+    
+/* Style the dropdown arrow via the wrapper */
+.select-wrapper::after {
+    content: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c8a46a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    position: absolute;
+    right: 15px; /* Adjust this value to move the arrow */
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    padding-top: 10px;
+    height: 1rem;
+    width: 1rem;
+}
+
     .message-field {
         height: 150px;
         resize: none;
@@ -926,20 +953,19 @@ body {
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
     <nav>
         <div class="nav-left">
-            <a href="https://www.australian-macadamias.org/stories/">Stories</a>
-            <a href="https://www.australian-macadamias.org/recipes/">Our Recipes</a>
-            <a href="https://www.australian-macadamias.org/health-wellbeing/">Health Benefits</a>
+            <a href="https://www.australianmacadamias.in/stories/">Stories</a>
+            <a href="https://www.australianmacadamias.in/recipes/">Our Recipes</a>
+            <a href="https://www.australianmacadamias.in/health-benefits/">Health Benefits</a>
         </div>
         <div class="logo">
             <img src="australia macadamia logo.png" alt="Australian Macadamias Logo">
         </div>
         <div class="nav-right">
-            <a href="https://www.australian-macadamias.org/an-australian-legend/">History</a>
-            <a href="https://www.australian-macadamias.org/our-sustainable-approach/">Sustainability</a>
+            <a href="https://www.australianmacadamias.in/an-australian-legend/">History</a>
+            <a href="https://www.australianmacadamias.in/sustainability/">Sustainability</a>
             <a href="#">Trade</a>
             <span class="search-icon" id="searchIcon"><img src="search-removebg-preview.png"></span>
         </div>
@@ -949,14 +975,12 @@ body {
     </div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
 
     <div class="hero-title">Partner with Australia Macadamias India</div>
     <div class="hero-subtitle">Premium macadamias for distributors, suppliers, and traders</div>
 </section>
 
-<!-- WHY PARTNER -->
 <section class="why-partner">
     <div>
         <div class="section-title">Why Partner with Us</div>
@@ -969,14 +993,12 @@ body {
     </div>
 </section>
 
-<!-- PRODUCTS -->
 <section class="products" 3rem 0; overflow: hidden;">
   <div class="section-title">Product Offerings</div>
 
 <div class="product-carousel" id="product-carousel-track">
     <div class="product-cards" style="display: flex; gap: 1.5rem;">
       
-      <!-- Product 1 -->
       <div class="product-card" style="background: url('product-card-bg.png') center/contain no-repeat; width: 220px; height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0;">
         <div class="product-card-img">
           <img src="2011 Girl snack roasted macadamias (1) 1.png" alt="Roasted Macadamias" style="width: 120px; height: auto;">
@@ -984,7 +1006,6 @@ body {
         <div class="product-card-label">Macadamia Nut (Roasted)</div>
       </div>
 
-      <!-- Product 2 -->
       <div class="product-card" style="background: url('product-card-bg.png') center/contain no-repeat; width: 220px; height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0;">
         <div class="product-card-img">
           <img src="1409 Macadamias-snacking (10) 1.png" alt="Raw Macadamias" style="width: 120px; height: auto;">
@@ -992,7 +1013,6 @@ body {
         <div class="product-card-label">Macadamia Nut (Raw)</div>
       </div>
 
-      <!-- Product 3 -->
       <div class="product-card" style="background: url('product-card-bg.png') center/contain no-repeat; width: 220px; height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0;">
         <div class="product-card-img">
           <img src="1409 Macadamias-in the kitchen (3).png" alt="Roasted Salted Macadamias" style="width: 120px; height: auto;">
@@ -1000,7 +1020,6 @@ body {
         <div class="product-card-label">Macadamia Nut (Roasted Salted)</div>
       </div>
 
-      <!-- Product 4 -->
       <div class="product-card" style="background: url('product-card-bg.png') center/contain no-repeat; width: 220px; height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0;">
         <div class="product-card-img">
           <img src="1509 Macadamia topping (2).jpg" alt="Caramel Macadamias" style="width: 120px; height: auto;">
@@ -1008,7 +1027,6 @@ body {
         <div class="product-card-label">Macadamia Nut (Caramel)</div>
       </div>
 
-      <!-- Product 5 -->
       <div class="product-card" style="background: url('product-card-bg.png') center/contain no-repeat; width: 220px; height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0;">
         <div class="product-card-img">
           <img src="1211 Macadamias-storage (1).png" alt="Plain Macadamias" style="width: 120px; height: auto;">
@@ -1027,19 +1045,20 @@ body {
   </div>
 </section>
 
-<!-- CONTACT -->
 <section class="contact">
   <div class="contact-title">Get in Touch with Us</div>
   <div class="contact-flex">
     <form class="contact-form">
       <div class="contact-form-title">Send us a message</div>
       <label class="form-label">Lead type</label>
-      <select class="form-field">
-        <option>Choose</option>
-        <option>Distributor</option>
-        <option>Supplier</option>
-        <option>Trader</option>
-      </select>
+      <div class="select-wrapper">
+          <select class="form-field select-field">
+            <option>Choose</option>
+            <option>Distributor</option>
+            <option>Supplier</option>
+            <option>Trader</option>
+          </select>
+      </div>
       <label class="form-label">Full name</label>
       <input type="text" class="form-field">
       <label class="form-label">Company name</label>
@@ -1059,7 +1078,6 @@ body {
 
 
 
-<!-- FOOTER -->
 <footer>
     <div class="custom-footer-bg">
         <img src="image (11) 2.png" alt="" class="footer-blob">
@@ -1102,7 +1120,7 @@ body {
             <div class="footer-contact-section">
                 <div class="footer-contact-title">Contact us</div>
                 <div class="footer-contact-info">
-                  Varun Kakar<br>
+                    Varun Kakar<br>
                     varun.kakar@fourpillarstrading.com<br>
                     +91 88280 71244
                 </div>
